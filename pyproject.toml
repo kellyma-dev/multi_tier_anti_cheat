@@ -1,0 +1,27 @@
+[project]
+name = "multi-tier-anti-cheat"
+version = "0.1.0"
+description = "A machine learning based multi-tier cheat detection approach in first person shoot (FPS) games"
+authors = [
+    {name = "Kelly Ma",email = "kelly.xinke.ma@gmail.com"}
+]
+license = {text = "GPL"}
+readme = "README.md"
+requires-python = ">=3.12"
+
+[tool.poetry.dependencies]
+pandas = "^2.3.1"
+tables = "^3.10.2"
+scipy = "^1.16.1"
+liac-arff = "^2.5.0"
+
+[tool.poetry]
+packages = [
+    { include = "multi_tier_anti_cheat/common" },
+    { include = "multi_tier_anti_cheat/tier1" },
+    { include = "multi_tier_anti_cheat/tier2" },
+]
+
+#[build-system]
+#requires = ["poetry-core>=2.0.0,<3.0.0"]
+#build-backend = "poetry.core.masonry.api"
