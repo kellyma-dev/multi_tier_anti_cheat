@@ -1,27 +1,38 @@
-[project]
+[tool.poetry]
 name = "multi-tier-anti-cheat"
 version = "0.1.0"
 description = "A machine learning based multi-tier cheat detection approach in first person shoot (FPS) games"
-authors = [
-    {name = "Kelly Ma",email = "kelly.xinke.ma@gmail.com"}
-]
-license = {text = "GPL"}
+authors = ["Kelly Xinke Ma"]
+license = "GPL"
 readme = "README.md"
-requires-python = ">=3.12"
-
-[tool.poetry.dependencies]
-pandas = "^2.3.1"
-tables = "^3.10.2"
-scipy = "^1.16.1"
-liac-arff = "^2.5.0"
-
-[tool.poetry]
 packages = [
     { include = "multi_tier_anti_cheat/common" },
     { include = "multi_tier_anti_cheat/tier1" },
     { include = "multi_tier_anti_cheat/tier2" },
 ]
 
-#[build-system]
-#requires = ["poetry-core>=2.0.0,<3.0.0"]
-#build-backend = "poetry.core.masonry.api"
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^2.3.1"
+tables = "^3.10.1"
+scipy = "^1.15.3"
+liac-arff = "^2.5.0"
+scikit-learn = "^1.3.0"
+xgboost = ">=1.7.0"
+numpy = ">=1.24.0"
+matplotlib = "^3.6.0"
+seaborn = "^0.12.0"
+joblib = "^1.2.0"
+torch = "^2.3.0"
+pytorch-tabnet = "^4.1.0"
+tqdm = "^4.66.0"
+
+[tool.poetry.group.test.dependencies]
+
+[tool.entrypoints.commands]
+setup = ["poetry install --with test"]
+updateDependencies = ["poetry update", "poetry install --with test", "rm -rf .tox/"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
